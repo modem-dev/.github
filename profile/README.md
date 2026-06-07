@@ -1,6 +1,10 @@
 <p align="center">
   <a href="https://modem.dev?utm_source=github&utm_medium=org_readme&utm_campaign=banner">
-    <img src="https://wsrv.nl/?url=modem.dev/images/logo-brand-kit/LogoFullMPrimary.svg&output=png&h=120" alt="Modem" height="80">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="./logo-light.svg">
+      <img src="./logo-light.svg" alt="Modem" height="80">
+    </picture>
   </a>
 </p>
 
