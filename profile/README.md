@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://modem.dev?utm_source=github&utm_medium=org_readme&utm_campaign=banner">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/modem-dev/.github/main/profile/logo-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/modem-dev/.github/main/profile/logo-light.svg">
-      <img src="https://raw.githubusercontent.com/modem-dev/.github/main/profile/logo-light.svg" alt="Modem" height="80">
+      <source media="(prefers-color-scheme: dark)" srcset="./logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="./logo-light.svg">
+      <img src="./logo-light.svg" alt="Modem" height="80">
     </picture>
   </a>
 </p>
