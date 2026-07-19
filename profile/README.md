@@ -11,7 +11,7 @@
 <h3 align="center">Your dev team's auto-triage Product Manager.</h3>
 
 <p align="center">
-  Modem captures every piece of customer feedback your team gets — from Slack, Linear, GitHub, Intercom, and PostHog — and triages it automatically so engineers spend less time PMing and more time shipping.
+  Modem captures every piece of customer feedback your team gets — from group chat, support tickets, GitHub issues, and more — and triages it automatically so agents and engineers can execute instead of waiting on traditional PMs.
 </p>
 
 <p align="center">
@@ -31,11 +31,13 @@
 
 We build a lot in the open. A few highlights:
 
-- **[hunk](https://github.com/modem-dev/hunk)** — Review-first terminal diff viewer for agentic coders
-- **[slop-scan](https://github.com/modem-dev/slop-scan)** — Detect AI code slop patterns in your repo
-- **[baudbot](https://github.com/modem-dev/baudbot)** — Multiplayer, always-on AI dev assistant built on Pi
-- **[glance-agent-plugins](https://github.com/modem-dev/glance-agent-plugins)** — Plugins for `glance.sh` — temporary image sharing for coding agents
-- **[podguy](https://github.com/modem-dev/podguy)** — Agent-driven post-production workflow for video podcasts
+- **[hunk](https://github.com/modem-dev/hunk)** - Review-first terminal diff viewer for agentic coders ([website](https://hunk.dev))
+- **[Sideshow](https://github.com/modem-dev/sideshow)** - A live visual surface for your coding agent ([website](https://sideshow.sh))
+- **[drizzle-scope-db](https://github.com/modem-dev/drizzle-scoped-db)** - Scope-enforced DB queries for Drizzle ORM
+- **[slop-scan](https://github.com/modem-dev/slop-scan)** - Detect AI code slop patterns in your repo
+- **[baudbot](https://github.com/modem-dev/baudbot)** - Multiplayer, always-on AI dev assistant built on Pi
+- **[glance-agent-plugins](https://github.com/modem-dev/glance-agent-plugins)** - Plugins for `glance.sh` — temporary image sharing for coding agents
+- **[podguy](https://github.com/modem-dev/podguy)** - Agent-driven post-production workflow for video podcasts
 
 ## Resources
 
