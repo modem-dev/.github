@@ -3,7 +3,7 @@
 **Program:** Zendesk Marketplace
 **Priority:** P1 · **Status:** ⛔ **blocked — do not submit yet**
 
-> ⛔ **Blocker 1 (known).** Open Linear issue: Modem must send Zendesk Marketplace
+> ⛔ **Blocker — the only one.** Open Linear issue: Modem must send Zendesk Marketplace
 > request headers on outbound calls. Zendesk requires this before it will list.
 >
 > 📝 **Docs say Beta; not treating it as a blocker.** `zendesk.mdx` carries
