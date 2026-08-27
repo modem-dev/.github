@@ -3,7 +3,7 @@
 **Program:** Zendesk Marketplace
 **Priority:** P1 · **Status:** ⛔ **blocked — do not submit yet**
 
-> ⛔ **Blocker — the only one.** Open Linear issue: Modem must send Zendesk Marketplace
+> ⛔ **Blocker — the only one.** [DEV-2653](https://linear.app/modem-dev/issue/DEV-2653) (Backlog since 2026-05-27, unstarted): Modem must send Zendesk Marketplace
 > request headers on outbound calls. Zendesk requires this before it will list.
 >
 > 📝 **Docs say Beta; not treating it as a blocker.** `zendesk.mdx` carries
@@ -86,7 +86,7 @@ Data is processed for topic extraction and analysis. It is not exported or backe
 
 ## Before submitting
 
-- [ ] Close the request-headers Linear issue — **the only real blocker**
+- [ ] Close [DEV-2653](https://linear.app/modem-dev/issue/DEV-2653) — **the only real blocker**. Small: three headers across four call sites, fully specified in the ticket.
 - [ ] Settle the global-`read` vs `tickets:read` scope question
 - [ ] Confirm no Modem listing already exists
 - [ ] Re-verify requirements against Zendesk's live developer docs

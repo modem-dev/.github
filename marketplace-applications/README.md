@@ -19,8 +19,9 @@ eight months old and has already proven stale.
 | [01](01-jira-atlassian-marketplace.md) | Atlassian Marketplace | P1 | ✅ Ready once assets exist; one scope decision |
 | [02](02-intercom-app-store.md) | Intercom App Store | P1 | ✅ Ready once assets exist — full-access app |
 | [07](07-gong-collective.md) | Gong Collective | P2 | ✅ Ready once assets exist; confirm program with Gong |
-| [03](03-zendesk-marketplace.md) | Zendesk Marketplace | P1 | ⛔ Request-headers Linear issue |
-| [04](04-github-marketplace.md) | GitHub Marketplace | P1 | ⛔ `marketplace_purchase` webhook not implemented |
+| [03](03-zendesk-marketplace.md) | Zendesk Marketplace | P1 | ⛔ [DEV-2653](https://linear.app/modem-dev/issue/DEV-2653) — small, stalled in Backlog since May |
+| [04](04-github-marketplace.md) | GitHub Marketplace | P1 | ⛔ [DEV-4050](https://linear.app/modem-dev/issue/DEV-4050) — `marketplace_purchase` handler |
+| [08](08-asset-shot-list.md) | *Asset shot list* | — | 📸 The critical path for all seven |
 
 Not drafted: **Salesforce/AppExchange** — the audit correctly re-scoped it to a
 listing-type decision, not a form. Nothing to fill until that question is answered.
@@ -35,6 +36,7 @@ listing-type decision, not a form. Nothing to fill until that question is answer
 ## Findings
 
 **1. GitHub's plan-change webhook is required, and a free listing doesn't avoid it.**
+Filed as [DEV-4050](https://linear.app/modem-dev/issue/DEV-4050).
 No `marketplace_purchase` handler exists anywhere in the repo. Checked against
 GitHub's live docs: the requirement is stated as applying to all listings, free or
 paid, and `marketplace_purchase` fires on *"the free version"* too
@@ -67,7 +69,10 @@ not a launch dependency.
 Slack also required a 30–90s captioned demo video. None exist. Both are reusable
 across all seven listings, and both block everything except the Linear email.
 
-1. Produce screenshots + demo video (unblocks everything)
+Full capture spec, per-marketplace dimensions, and a video beat sheet:
+**[08-asset-shot-list.md](08-asset-shot-list.md)**.
+
+1. Produce screenshots + demo video per the shot list (unblocks everything)
 2. Send the Linear email — fastest listing, existing relationship
 3. Submit Notion (5–10 business day review clock, start it early)
 4. Submit Jira, Intercom, and Gong
@@ -87,16 +92,35 @@ Still needed before the affected forms can go out.
    and stating the position on customer data and model training. Needs one answer used
    consistently everywhere.
 5. **Data residency.** Atlassian asks where customer data is stored.
-6. **Public support page.** Slack's review flagged this as unverified and it was never
+6. **Which positioning do the listings lead with?** The live homepage reads "Product
+   execution for the AI era"; the drafts use the February fact sheet's "AI product
+   teammate"; the GitHub org README says "auto-triage Product Manager". Three live
+   positionings. Pick one — it's a find-and-replace, not a rewrite. Detail in the shot list.
+7. **Public support page.** Slack's review flagged this as unverified and it was never
    closed out. Several forms require a no-login support page.
-7. **Did the Slack AI disclaimers ship?** Slack's review asked for an "AI responses may
+8. **Did the Slack AI disclaimers ship?** Slack's review asked for an "AI responses may
    be inaccurate" disclaimer wherever AI output appears. Other marketplaces ask the same
    question, and the answer should be true before it's given.
 
-## Also worth a look
+## Spot-check: do listings already exist?
 
-The audit lists **Stripe** as P4 "listable", but `stripe/router.ts:51` says *"The app
-is published, so every org installs through the public marketplace authorize URL."*
-Modem may already have a live Stripe Marketplace listing. Worth checking before anyone
-spends an afternoon on it — and it means the audit's "not submitted" statuses are
-unreliable in at least one direction, which is what its own open item warned.
+The audit flags this as an open item — absence was inferred, never confirmed. Checked
+2026-08-27. **Caveat: both marketplace search pages are blocked by this environment's
+egress proxy, so these are web-search results, not direct portal checks.** Treat as
+supporting evidence, not proof. Someone should confirm in the portals.
+
+| Marketplace | Result |
+| --- | --- |
+| Atlassian | No Modem listing surfaced. Consistent with "not submitted". |
+| Stripe | No Modem listing surfaced. |
+
+On **Stripe** specifically: `stripe/router.ts:51` says *"The app is published, so every
+org installs through the public marketplace authorize URL."* Read alongside a search
+that finds no listing, the likely reconciliation is that the Stripe **OAuth app** is
+published — which is what makes the public authorize URL work — while no **Marketplace
+listing** exists. Those are different things and the code comment only evidences the
+first. Worth five minutes in the Stripe dashboard to settle, but it no longer looks
+like the audit is wrong here.
+
+What did surface in search: `modem.dev/integrations` is live and indexed, as is
+`modem.dev/ai-product-teammate`. Both are usable as listing URLs.

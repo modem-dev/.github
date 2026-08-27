@@ -2,7 +2,7 @@
 
 **Program:** GitHub Marketplace (GitHub App listing)
 **Priority:** P1 · **Status:** ⛔ **blocked on engineering**
-**Listing type:** Free (decided 2026-08-27)
+**Listing type:** Free (decided 2026-08-27) · **Blocker ticket:** [DEV-4050](https://linear.app/modem-dev/issue/DEV-4050)
 
 > ⛔ **Blocker: the plan-change webhook is required, and a free listing does not
 > avoid it.** GitHub Marketplace requires the app to handle `marketplace_purchase`
@@ -109,6 +109,6 @@ it is the single most reassuring thing on the listing.
 
 ## Before submitting
 
-- [ ] **Implement the `marketplace_purchase` webhook handler** — confirmed required
+- [ ] **Implement the `marketplace_purchase` webhook handler** — [DEV-4050](https://linear.app/modem-dev/issue/DEV-4050)
 - [ ] Confirm 2FA on the publishing org
 - [ ] Re-verify requirements against GitHub's live developer docs
