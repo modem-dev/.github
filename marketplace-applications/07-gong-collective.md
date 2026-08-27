@@ -2,16 +2,16 @@
 
 **Program:** Gong Collective (marketplace inside the Gong Partner Network)
 **Technology partner request:** https://integrations.gong.io/partner/request
-**Priority:** P2 · **Status:** draft ready, blocked on docs de-beta
+**Priority:** P2 · **Status:** ready to submit once assets exist
 **Why it matters:** highest buyer-relevance of the P2 set. Gong's ecosystem points at
 customer-facing and revenue teams, which overlaps Modem's buyer. ~280–300 apps in the
 integrations category, roughly a third AI-positioned — established but not saturated.
 
-> 🚧 **Blocker (not in the Notion audit).** `apps/docs/integrations/gong.mdx` carries
-> `tag: 'Beta'`, the overview card reads "Gong (Beta)", and `overview.mdx` line 186
-> tells readers Beta integrations are "enabled per organization rather than being
-> available to everyone." The manifest says `featureFlag: null` — Gong is GA. Fix the
-> docs before submitting.
+> 📝 **Note, not a blocker.** `gong.mdx` carries `tag: 'Beta'` and the overview card
+> reads "Gong (Beta)", while the manifest says `featureFlag: null` — Gong is GA.
+> Submitting as-is (decision, 2026-08-27). Gong's partner request is human-reviewed
+> and has no no-beta rule; if a reviewer raises it, the answer is that it is GA and
+> the docs label is stale.
 
 > ⚠️ **Gong requires Modem's Scale plan ($250/mo).** Per `INTEGRATION_MINIMUM_PLAN`,
 > Gong moved to the Scale tier on 2026-08-17. It is not available on Basic or Startup.
@@ -83,7 +83,6 @@ with PostgreSQL Row-Level Security.
 
 ## Before submitting
 
-- [ ] Strip the Beta tag from `gong.mdx` and the overview card
 - [ ] **Confirm current requirements directly with Gong** — partner program structures
       change and public documentation is thin. Recommend emailing before filling the form.
 - [ ] Queue the GTM partner application for after the listing goes live

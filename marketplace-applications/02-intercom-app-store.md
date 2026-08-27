@@ -2,9 +2,9 @@
 
 **Program:** Intercom App Store; publishing auto-enrols in the App Partner Program
 **Portal:** Intercom Developer Hub → your app → App Listing + App Partner Program
-**Priority:** P1 · **Status:** draft ready, blocked on a decision (below) + assets
+**Priority:** P1 · **Status:** ready to submit once assets exist
 
-> ❓ **Decision required before anything else: which OAuth app gets listed?**
+> ✅ **Decided 2026-08-27: list the full-access app.**
 > Modem runs **two** Intercom OAuth apps (`packages/api/.../intercom/router.ts`):
 > - **read-only** (`INTERCOM_READONLY_CLIENT_ID`) — a separate, already
 >   Intercom-approved app whose scopes physically cannot write
@@ -12,12 +12,14 @@
 >   conversation management. Per the docs, write access is **disabled by default**
 >   and an admin opts in via Settings → Integrations → Intercom
 >
-> These are different submissions with different review burdens. The read-only app
-> is the easy approval; the full-access app is the one that earns the "bidirectional
-> integration" framing the Notion audit is counting on. **Listing the read-only app
-> would undercut the entire rationale for prioritizing Intercom.** Recommend
-> submitting the full-access app and disclosing the default-off write behaviour as a
-> privacy feature.
+> The full-access app is the one that earns the "bidirectional integration" framing
+> the audit is counting on, and it is what makes the App Partner Program co-marketing
+> worth having. The harder review is the cost of that.
+>
+> **Submission posture:** lead with the default-off write behaviour as a privacy
+> feature, not a footnote. Modem asks for write scopes but ships with writes
+> disabled until an admin turns them on — that is a stronger answer to "why do you
+> need these permissions" than most applicants can give.
 
 ## Listing form — filled
 
@@ -92,7 +94,6 @@ Publishing auto-enrols Modem. Prepare:
 
 ## Before submitting
 
-- [ ] **Decide read-only vs full-access app** (above) — everything else depends on it
 - [ ] Screenshots showing Intercom conversations inside Modem
 - [ ] Confirm no Modem listing already exists
 - [ ] Re-verify requirements against Intercom's live developer docs

@@ -2,16 +2,16 @@
 
 **Program:** Atlassian Marketplace, Integrations category, Cloud only
 **Portal:** https://marketplace.atlassian.com/manage · partner account required
-**Priority:** P1 · **Status:** draft ready, blocked on assets + docs de-beta
+**Priority:** P1 · **Status:** ready to submit once assets exist
 
-> 🚧 **Blocker found (not in the Notion audit).** `apps/docs/integrations/jira.mdx`
-> still carries `tag: 'Beta'` and an inline "currently in beta" warning, and
-> `overview.mdx` line 186 tells readers that Beta integrations are "enabled per
-> organization rather than being available to everyone."
-> An Atlassian reviewer reads the public docs. Submitting while the docs describe
-> the integration as limited-availability invites a rejection. The manifest says
-> `featureFlag: null` — it is GA. **This is a stale-docs fix, not an engineering
-> one.** Strip the tag and the warning before submitting.
+> 📝 **Note, not a blocker.** `apps/docs/integrations/jira.mdx` carries `tag: 'Beta'`
+> and an inline "currently in beta" warning, while the manifest says
+> `featureFlag: null` — it is GA. Atlassian has no no-beta rule, so this does not
+> gate submission and we are submitting as-is (decision, 2026-08-27).
+>
+> It is still worth fixing eventually: a buyer who clicks through from the listing
+> to docs saying "features and behavior may change" is less likely to install. Treat
+> it as a conversion nit on the docs backlog, not a launch dependency.
 
 ## Account setup
 
@@ -84,7 +84,6 @@ Webhook events registered: `jira:issue_created`, `jira:issue_updated`,
 
 ## Before submitting
 
-- [ ] **Strip the Beta tag** from `jira.mdx` and reconcile `overview.mdx` line 186
 - [ ] Decide on `write:servicedesk-request`
 - [ ] Confirm data residency
 - [ ] Verify current requirements against Atlassian's live developer docs — the

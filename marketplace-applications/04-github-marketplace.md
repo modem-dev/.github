@@ -2,28 +2,37 @@
 
 **Program:** GitHub Marketplace (GitHub App listing)
 **Priority:** P1 · **Status:** ⛔ **blocked on engineering**
+**Listing type:** Free (decided 2026-08-27)
 
-> ⛔ **Blocker found (not in the Notion audit).** GitHub Marketplace requires the app
-> to **handle Marketplace webhook events for plan changes** (`marketplace_purchase`:
-> purchased, changed, cancelled, pending_change). A search of `apps/github/src` and
-> `packages/` finds **no `marketplace_purchase` handler anywhere in the repo**.
+> ⛔ **Blocker: the plan-change webhook is required, and a free listing does not
+> avoid it.** GitHub Marketplace requires the app to handle `marketplace_purchase`
+> events (purchased, changed, cancelled, pending_change). A search of
+> `apps/github/src` and `packages/` finds **no handler anywhere in the repo**.
 >
-> The audit lists this as a checkbox. It is an engineering task, and it is the only
-> hard blocker in the P1 set that cannot be cleared by writing copy or fixing docs.
-> Size it before committing to a submission date.
+> This was checked against GitHub's live docs on 2026-08-27, because the free-listing
+> route looked like it might sidestep it. It does not:
 >
-> ⚠️ **This requirement may be avoidable.** It applies to apps *sold through* GitHub
-> Marketplace. A **free** listing that bills entirely on modem.dev may not need
-> Marketplace billing events at all. **Confirm against GitHub's current docs before
-> building anything** — the answer decides whether this is a one-line listing or a
-> sprint.
+> - *"Apps must have webhook events set up to notify the publisher of any plan
+>   changes or cancellations using the GitHub Marketplace API"* — stated as applying
+>   to all listings, free or paid
+>   ([Requirements for listing an app](https://docs.github.com/en/apps/github-marketplace/creating-apps-for-github-marketplace/requirements-for-listing-an-app))
+> - *"When a customer purchases a paid plan, free trial, **or the free version** of
+>   your GitHub Marketplace app, you'll receive the `marketplace_purchase` event
+>   webhook with the `purchased` action"*
+>   ([Handling new purchases and free trials](https://docs.github.com/en/apps/github-marketplace/using-the-github-marketplace-api-in-your-app/handling-new-purchases-and-free-trials))
+>
+> Free installs still generate purchase events, so the handler is needed either way.
+> This is the only P1 blocker that copy cannot clear. Size it before committing to a date.
 
-## Free vs paid — decide first
+## Free vs paid — decided: free
 
-| Option | Requirement | Recommendation |
+| Option | Requirement | |
 | --- | --- | --- |
-| **Free listing** | General requirements only | ✅ **Recommended.** Modem bills on modem.dev via Stripe. A free GitHub listing is a distribution channel, not a billing one, and avoids publisher verification entirely. |
-| Paid listing | Publisher verification + Marketplace billing flow | Adds meaningful lead time for no obvious gain |
+| **Free listing** | Plan-change webhook + general requirements | ✅ **Chosen.** Modem bills on modem.dev via Stripe. A free listing is distribution, not billing — and it avoids publisher verification. |
+| Paid listing | Publisher verification + full Marketplace billing flow | Rejected — meaningful lead time for no gain |
+
+The free route still saves the publisher-verification lead time. It just doesn't save
+the webhook.
 
 ## Requirements check
 
@@ -33,10 +42,10 @@
 | Publicly available — no invite-only or preview | ✅ `github` is unflagged in the manifest (GA by construction); docs carry no Beta tag |
 | Contact information | ✅ support@modem.dev |
 | Description | ✅ below |
-| Pricing plan | ⚠️ Decide free vs paid (above) |
+| Pricing plan | ✅ Free |
 | Privacy policy | ✅ https://modem.dev/privacy |
 | Support link | ✅ https://modem.dev/contact |
-| Webhook events for plan changes | ⛔ **Not implemented** — see blocker |
+| Webhook events for plan changes | ⛔ **Not implemented** — required even for free listings, see blocker |
 | 2FA on the publishing account/org | ⚠️ Confirm enabled on `modem-dev` |
 
 ## Listing form — filled
@@ -100,7 +109,6 @@ it is the single most reassuring thing on the listing.
 
 ## Before submitting
 
-- [ ] **Resolve the plan-change webhook question** — is it required for a free listing?
-- [ ] Decide free vs paid
+- [ ] **Implement the `marketplace_purchase` webhook handler** — confirmed required
 - [ ] Confirm 2FA on the publishing org
 - [ ] Re-verify requirements against GitHub's live developer docs

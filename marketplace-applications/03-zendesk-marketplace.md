@@ -6,12 +6,10 @@
 > ⛔ **Blocker 1 (known).** Open Linear issue: Modem must send Zendesk Marketplace
 > request headers on outbound calls. Zendesk requires this before it will list.
 >
-> ⛔ **Blocker 2 (found here, not in the audit).**
-> `apps/docs/integrations/zendesk.mdx` carries `tag: 'Beta'` and an inline
-> "currently in beta" warning, and `overview.mdx` line 186 tells readers Beta
-> integrations are "enabled per organization rather than being available to
-> everyone." The manifest says `featureFlag: null` — it is GA. The docs are stale.
-> Fix before submitting.
+> 📝 **Docs say Beta; not treating it as a blocker.** `zendesk.mdx` carries
+> `tag: 'Beta'` while the manifest says `featureFlag: null` (GA). Zendesk has no
+> no-beta rule, so we submit as-is once the request-headers issue clears
+> (decision, 2026-08-27). Worth fixing on the docs backlog for conversion reasons.
 >
 > Copy below is drafted now because the character limits are tight and the audit
 > explicitly says to draft them early rather than at submission time.
@@ -88,8 +86,7 @@ Data is processed for topic extraction and analysis. It is not exported or backe
 
 ## Before submitting
 
-- [ ] Close the request-headers Linear issue
-- [ ] Strip the Beta tag from `zendesk.mdx`
+- [ ] Close the request-headers Linear issue — **the only real blocker**
 - [ ] Settle the global-`read` vs `tickets:read` scope question
 - [ ] Confirm no Modem listing already exists
 - [ ] Re-verify requirements against Zendesk's live developer docs
