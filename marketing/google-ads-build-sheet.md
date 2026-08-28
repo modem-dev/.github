@@ -103,16 +103,76 @@ Actual account keywords, 45-day performance from PostHog (`$entry_utm_term`):
 
 ## Task 4 — New campaign structure
 
-One campaign, 3–4 ad groups, **one ad group per lander**, total budget unchanged (~$15/day). Concentration beats coverage: 13 keywords at this budget = 2–3 sessions/day spread too thin to ever read.
+One campaign (`search-tiered-2026q3`), 4 ad groups + 1 legacy holdover, **one ad group per lander**, total budget unchanged. Concentration beats coverage: 19 keywords at this budget = 2–3 sessions/day spread too thin to ever read.
 
-TODO(fill from lander inventory + keyword data):
+All keywords **phrase + exact only — no broad match anywhere**. Final URLs are PostHog-confirmed live pages. Append tracking template from Task 5 to every final URL.
 
-### Ad group 1 — Tier 1: feedback → Linear (JTBD)
-### Ad group 2 — Tier 1: feedback MCP / agent context (JTBD)
-### Ad group 3 — Tier 2: Productboard alternative (comparison)
-### Ad group 4 — Tier 2: Enterpret / Canny (comparison)
+### Ad group 1 — `feedback-mcp-server` (Tier 1) — ~25% of budget
 
-For each: keywords (phrase + exact only — no broad match anywhere), final URL = the matching guide/comparison page (not the homepage), 2 RSAs mirroring the query language.
+**Final URL:** `https://modem.dev/guides/best-mcp-servers-for-customer-feedback`
+
+| Keyword | Match |
+|---|---|
+| customer feedback mcp server | phrase + exact |
+| mcp server for customer feedback | exact |
+| feedback mcp server | phrase |
+| mcp context server | exact *(moved from legacy — had 1 session on `/missing-context`)* |
+
+RSA angles: H "MCP Server for Customer Feedback" / "Give Your Agents Customer Context" / "Feedback, Triaged for Claude & Cursor" · D "Pipe every ticket, thread, and issue into your coding agent via MCP. Set up in minutes."
+
+### Ad group 2 — `feedback-to-coding-agents` (Tier 1) — ~25% of budget
+
+**Final URL:** `https://modem.dev/guides/best-tools-route-feedback-to-coding-agents`
+
+| Keyword | Match |
+|---|---|
+| route customer feedback to coding agents | phrase |
+| send customer feedback to coding agent | phrase |
+| customer feedback for ai agents | phrase |
+| context for ai agents | phrase + exact *(moved — 1 pricing view in 45d)* |
+| ai agent context | exact *(moved)* |
+| ai agent memory | exact *(moved)* |
+| auto triage customer feedback | phrase *(lander alt: `/guides/best-ai-triage-tools-for-engineering-teams` — split into its own ad group in phase 2 if it gets clicks)* |
+
+RSA angles: H "Route Feedback to Your Coding Agents" / "Auto-Triage Customer Feedback" / "From Support Ticket to Agent Task" · D "Modem captures feedback from chat, tickets, and GitHub — triaged and ready for agents to execute."
+
+### Ad group 3 — `productboard-alternative` (Tier 2) — ~20% of budget
+
+**Final URL:** `https://modem.dev/productboard-alternative`
+
+| Keyword | Match |
+|---|---|
+| productboard alternative | phrase + exact |
+| productboard alternatives | exact |
+| productboard competitors | exact |
+| productboard vs | phrase |
+
+RSA angles: H "The Productboard Alternative for Devs" / "Feedback Triage Without the PM Overhead" · D "Auto-triage feedback straight to Linear and your coding agents. See why teams switch."
+
+### Ad group 4 — `canny-alternative` (Tier 2) — ~20% of budget
+
+**Final URL:** `https://modem.dev/canny-alternative` *(most-visited comparison page — 11 views)*
+
+| Keyword | Match |
+|---|---|
+| canny alternative | phrase + exact |
+| canny alternatives | exact |
+| canny vs productboard | exact *(lander alt: none live yet — the vs-pages have no traffic; point at `/canny-alternative` until a vs page is confirmed)* |
+
+RSA angles: H "Canny Alternative for Dev Teams" / "Beyond the Feedback Board" · D "Feedback boards collect; Modem triages. Every request routed, deduped, and agent-ready."
+
+### Ad group 5 — `category-survivors` (Tier 3 holdover) — ~10% of budget, bid-capped
+
+The two legacy keywords that produced signal, kept on their existing landers:
+
+| Keyword | Match | Final URL |
+|---|---|---|
+| ai product management tool | phrase + exact | `https://modem.dev/ai-product-manager` |
+| product feedback tool | exact | `https://modem.dev/guides/which-feedback-tool-for-which-bottleneck` *(upgrade from `/modem-for-discord`, which produced 0 engagement on 3 sessions)* |
+
+### Phase 2 bench (add only by swapping out a 30-day loser)
+
+Confirmed-live comparison landers with no ad group yet: `/enterpret-alternative`, `/buildbetter-alternative`, `/pylon-alternative`, `/unwrap-alternative`, `/pendo-alternative`, `/feedback-board-alternative`. Each is a ready-made ad group on the Tier 2 pattern above.
 
 ## Task 5 — Tracking
 
@@ -126,3 +186,12 @@ Every Monday, 15 min:
 2. Search terms report: add junk queries to `nav-and-junk`.
 3. A keyword with 10+ clicks and zero engaged sessions gets paused. A keyword with an engaged session gets its bid nudged +20%.
 4. Do **not** add keywords or switch bidding strategy for 30 days. Let it read.
+
+---
+
+## Appendix — data provenance & open items
+
+- Keyword and session data: PostHog `sessions` table, Jul 14–Aug 28 2026, filter `$entry_utm_source='google' AND $entry_utm_medium='cpc'` (83 sessions — includes the 6-session DSA bucket; the earlier ~61 figure likely excluded it).
+- Lander inventory: enumerated from PostHog `$pageview` pathnames (modem.dev is egress-blocked from the analysis environment, so the sitemap couldn't be fetched). **Only pages with ≥1 recorded pageview are listed** — roughly 21 guides, 1 alternative page, and 3 vs pages exist but have zero traffic and couldn't be confirmed. Before launch, sanity-check each final URL loads.
+- The only live vs-style page found is `/modem-vs-claude-tag`; no competitor-vs-competitor pages (e.g. canny-vs-productboard) have traffic yet. If those pages are live, they're better final URLs for the vs-keywords than the alternative pages.
+- Junk-signup spot check pending: 4 `user_signed_up` events from ad sessions (`claude code` ×2, `cursor`, `ai code assistant`) — confirm these are the known junk accounts before treating navigational as strictly zero-value.
