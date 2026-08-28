@@ -1,10 +1,35 @@
 # Asset shot list — screenshots and demo video
 
+> 📸 **None of these screenshots exist yet.** This file is the spec for capturing them,
+> not an index of existing assets. That absence *is* the blocker — it's why assets, not
+> the P1/P2 ordering, are the critical path.
+
 The critical path. Nothing except the Linear email can be submitted without these, and
 they are reusable across all seven listings. Capture once, crop per marketplace.
 
-Screen names below are real dashboard routes
-(`apps/dashboard/src/app/[orgSlug]/(dashboard)/…`).
+Links below go straight to the screen to shoot. Replace `{org}` with the demo org's
+slug — routes are `apps/dashboard/src/app/[orgSlug]/(dashboard)/…`, served at
+`https://app.modem.dev/{org}/…`.
+
+**Where captured files should land:** ⚠️ not yet decided. Pick one home before shooting
+(shared Drive folder, or `marketplace-applications/assets/` in this repo) and link it
+here, so the next person doesn't re-shoot work that already exists.
+
+## Progress
+
+Update as shots are captured, so this doubles as the tracker.
+
+| Shot | Captured? |
+| --- | --- |
+| C1 hero — topics list | ❌ |
+| C2 topic detail | ❌ |
+| C3 agent chat | ❌ |
+| C4 person/company profile | ❌ |
+| C5 sources | ❌ |
+| C6 integrations catalog | ❌ |
+| C7 automations | ❌ |
+| I-JIRA · I-INTERCOM · I-ZENDESK · I-GITHUB · I-NOTION · I-LINEAR · I-GONG | ❌ all seven |
+| Demo video (30–90s, captioned) | ❌ |
 
 ## Capture rules
 
@@ -22,27 +47,27 @@ Screen names below are real dashboard routes
 
 ## Core set — shoot these seven once, reuse everywhere
 
-| # | Screen | What must be visible | Used by |
+| # | Go here | What must be visible | Used by |
 | --- | --- | --- | --- |
-| C1 | `topics` list | Multiple topics, each showing source icons from several tools. **This is the hero shot** — it's the one image that explains the product. | All |
-| C2 | `topics/[id]` detail | One topic holding evidence from 3+ different sources, with the people who reported it | All |
-| C3 | `agent` chat | A real question answered with citations back to source messages — e.g. "any open tickets about dark mode?" | All |
-| C4 | `people` or `companies` | A profile showing one person's activity stitched across several tools | Atlassian, Intercom, Zendesk, Gong |
-| C5 | `sources` | The connected-sources view showing many integrations live at once | All |
-| C6 | `settings/integrations` index | The integration catalog | All |
-| C7 | `automations` | A configured automation | GitHub, Atlassian |
+| C1 | `app.modem.dev/{org}/topics` | Multiple topics, each showing source icons from several tools. **This is the hero shot** — the one image that explains the product. | All |
+| C2 | `app.modem.dev/{org}/topics/{id}` | One topic holding evidence from 3+ different sources, with the people who reported it | All |
+| C3 | `app.modem.dev/{org}/agent` | A real question answered with citations back to source messages — e.g. "any open tickets about dark mode?" | All |
+| C4 | `app.modem.dev/{org}/people` or `/companies` | A profile showing one person's activity stitched across several tools | Atlassian, Intercom, Zendesk, Gong |
+| C5 | `app.modem.dev/{org}/sources` | The connected-sources view showing many integrations live at once | All |
+| C6 | `app.modem.dev/{org}/settings/integrations` | The integration catalog | All |
+| C7 | `app.modem.dev/{org}/automations` | A configured automation | GitHub, Atlassian |
 
 ## Per-integration shots — one each, for that marketplace only
 
-| Shot | Screen | Must show |
+| Shot | Go here | Must show |
 | --- | --- | --- |
-| I-JIRA | `settings/integrations/jira` + a topic containing a Jira issue | Jira issues in Modem; the agent creating or commenting on one |
-| I-INTERCOM | `settings/integrations/intercom` + a topic with an Intercom conversation | Conversation captured; the admin toggle for agent write access (this is the privacy story — show it) |
-| I-ZENDESK | `settings/integrations/zendesk` + a topic with a Zendesk ticket | Ticket comments grouped into a topic |
-| I-GITHUB | `settings/integrations/github` + `pull-requests` | Issues as feedback and PRs as shipping context, side by side |
-| I-NOTION | `agent` querying Notion | Agent reading/creating a Notion page from chat |
-| I-LINEAR | `agent` creating a Linear issue from a topic | Issue created with the evidence trail attached |
-| I-GONG | A topic containing a Gong call transcript | Call transcript as a topic, speakers resolved to people |
+| I-JIRA | `app.modem.dev/{org}/settings/integrations/jira` + a topic with a Jira issue | Jira issues in Modem; the agent creating or commenting on one |
+| I-INTERCOM | `app.modem.dev/{org}/settings/integrations/intercom` + a topic with an Intercom conversation | Conversation captured, **and the admin toggle for agent write access** — that toggle is the privacy story, so make it visible |
+| I-ZENDESK | `app.modem.dev/{org}/settings/integrations/zendesk` + a topic with a Zendesk ticket | Ticket comments grouped into a topic |
+| I-GITHUB | `app.modem.dev/{org}/settings/integrations/github` + `app.modem.dev/{org}/pull-requests` | Issues as feedback and PRs as shipping context, side by side |
+| I-NOTION | `app.modem.dev/{org}/agent` | Agent reading or creating a Notion page from chat |
+| I-LINEAR | `app.modem.dev/{org}/agent` | Agent creating a Linear issue from a topic, evidence trail attached |
+| I-GONG | `app.modem.dev/{org}/topics/{id}` | A Gong call transcript as a topic, speakers resolved to people |
 
 ## Per-marketplace requirements
 
