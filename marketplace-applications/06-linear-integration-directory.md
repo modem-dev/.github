@@ -71,10 +71,13 @@ From `REQUIRED_LINEAR_OAUTH_SCOPES`: `read`, `write`, `issues:create`,
 > Be ready to explain the use — mapping Modem's people/company records onto Linear
 > customers is a *good* story and worth stating proactively rather than being asked.
 
-## Assets
+## Assets — per Linear's live docs (verified 2026-08-28)
 
-- [ ] Logo, square, high-res PNG (light + dark)
-- [ ] 2–3 screenshots showing Linear issues created from Modem topics
+Submit via the form at [linear.app/docs/integration-directory#submit-your-integration](https://linear.app/docs/integration-directory#submit-your-integration); assets to integrations@linear.app or linked in the form. Linear provides a Figma template.
+
+- [x] Color icon, 320×320 — `assets/linear/modem-icon-color.svg` (built from the org logo)
+- [x] Monochrome white icon, 320×320 — `assets/linear/modem-icon-white.svg`
+- [ ] Showcase images, 1–3, **1600×1000** — ❌ and note: Linear says to **"defer away from simple screenshots"** and design them. This is design work, not capture work — the shot list's raw captures are an input, not the deliverable, for this one.
 
 ## Before submitting
 
