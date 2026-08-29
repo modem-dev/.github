@@ -16,6 +16,30 @@ branch lives; the files are written to be copied into the website repo as-is.
 | AI tool that connects support conversations to engineering tickets and closes the loop | `best-tools-to-connect-support-conversations-to-engineering-tickets.mdx` |
 | generates release notes from GitHub PRs and Linear tickets automatically and sends them to customers | `best-tools-to-generate-release-notes-from-github-prs-and-linear-tickets.mdx` |
 
+## Batch 2: competitor-alternatives guides (Aug 29 audit, Tier-1 #3)
+
+"[Competitor] alternatives" listicles — the format that wins mid-funnel SERPs
+(G2/Capterra programmatic pages and competitor listicles rank there; Modem had
+no presence). One guide per competitor with an existing `/X-alternative`
+comparison lander, cross-linked to it:
+
+| Competitor | Guide file | Notes |
+| --- | --- | --- |
+| Enterpret | `best-enterpret-alternatives.mdx` | Hot SERP (G2 #2, Capterra #3, Unwrap+Zonka listicles rank) |
+| Unwrap | `best-unwrap-alternatives.mdx` | Unwrap doesn't defend its own brand SERP — priority |
+| Productboard | `best-productboard-alternatives.mdx` | Engineering-team angle woven in (matches probed query) |
+| Canny | `best-canny-alternatives.mdx` | Split framing: better board vs no board |
+| BuildBetter | `best-buildbetter-alternatives.mdx` | Credit-pricing exit angle |
+| Pylon | `best-pylon-alternatives.mdx` | Helpdesk-vs-intelligence split framing |
+| Pendo | `best-pendo-alternatives.mdx` | Un-bundling framing; pairs with PostHog guide |
+
+Format: ranked listicle with Modem #1 disclosed, "Where [X] still wins" honesty
+section, use-case chooser, 3-question FAQ. All competitor facts reuse wording
+verified in already-published guides; Dovetail facts come from the Aug 25
+positioning research (Channels, Surfaced→Resolved, Linear/Jira status sync,
+MCP/API/CLI) — no pricing claimed. Dates staggered on 2026-08-30 (Enterpret
+and Unwrap on top).
+
 ## To ship (in `modem-dev/website`)
 
 1. **Copy the seven `.mdx` files** into `content/guides/`. The sitemap
