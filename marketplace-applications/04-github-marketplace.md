@@ -42,8 +42,17 @@ the webhook.
 > service outside Marketplace." Options: (a) position the GitHub App itself as free
 > (the integration costs nothing; a Modem subscription is a separate product) and see
 > if review accepts it — some free-with-external-SaaS listings do exist; (b) plan for
-> publisher verification + a paid plan. **Decide before submitting; this could
-> invalidate the free-listing strategy.**
+> publisher verification + one nominal paid plan; (c) list all Modem tiers as
+> Marketplace plans billed through GitHub, the
+> [codetree model](https://github.com/marketplace/codetree) (verified publisher, five
+> paid tiers, 14-day trials, GitHub as the billing rail). Note (c) requires
+> publisher verification, financial onboarding, **100+ installations of the GitHub
+> App**, and reconciling GitHub-billed customers with Stripe — a second billing
+> system. Recommended sequence (2026-08-29): submit free with positioning (a); do
+> **publisher verification now regardless** (cheap, earns the badge, and an
+> unverified published app cannot change its pricing plan later); revisit (c) only if
+> review rejects (a) or install volume clears the 100 gate and justifies it.
+> **Decide before submitting.**
 
 ## Requirements check
 
