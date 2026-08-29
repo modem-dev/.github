@@ -46,7 +46,7 @@ the webhook.
 | Privacy policy | ✅ https://modem.dev/privacy |
 | Support link | ✅ https://modem.dev/contact |
 | Webhook events for plan changes | ⛔ **Not implemented** — required even for free listings, see blocker |
-| 2FA on the publishing account/org | ⚠️ Confirm enabled on `modem-dev` — this is the **GitHub org setting**, unrelated to Modem's own magic-link login. An org owner checks [github.com/organizations/modem-dev/settings/security](https://github.com/organizations/modem-dev/settings/security) → "Require two-factor authentication". Likely already on (GitHub has required 2FA for active contributors since 2023), but only an owner can see it |
+| 2FA on the publishing account/org | ✅ Confirmed enabled on `modem-dev` (Talton, 2026-08-29). This is the GitHub org setting at [org security settings](https://github.com/organizations/modem-dev/settings/security), unrelated to Modem's own magic-link login |
 
 ## Listing form — filled
 
@@ -118,7 +118,5 @@ capture and framing skills included in the folder).
 ## Before submitting
 
 - [ ] **Implement the `marketplace_purchase` webhook handler** — [DEV-4050](https://linear.app/modem-dev/issue/DEV-4050)
-- [ ] Confirm 2FA on the publishing org — org-owner check at
-      [org security settings](https://github.com/organizations/modem-dev/settings/security);
-      Modem's magic-link product auth is unrelated to this requirement
+- [x] Confirm 2FA on the publishing org — confirmed enabled (Talton, 2026-08-29)
 - [ ] Re-verify requirements against GitHub's live developer docs
