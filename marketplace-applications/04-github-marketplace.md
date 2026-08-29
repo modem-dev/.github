@@ -34,6 +34,17 @@
 The free route still saves the publisher-verification lead time. It just doesn't save
 the webhook.
 
+> ⚠️ **Open question on the free plan (found re-verifying against live docs,
+> 2026-08-29):** GitHub's pricing-plans page states *"you can't list your app with a
+> free pricing plan if you offer a paid service outside of GitHub Marketplace"* — and
+> once a free-listed app meets the paid-app requirements, GitHub expects at least one
+> paid plan. Modem bills on modem.dev via Stripe, which reads as exactly that "paid
+> service outside Marketplace." Options: (a) position the GitHub App itself as free
+> (the integration costs nothing; a Modem subscription is a separate product) and see
+> if review accepts it — some free-with-external-SaaS listings do exist; (b) plan for
+> publisher verification + a paid plan. **Decide before submitting; this could
+> invalidate the free-listing strategy.**
+
 ## Requirements check
 
 | Requirement | Status |
@@ -46,7 +57,10 @@ the webhook.
 | Privacy policy | ✅ https://modem.dev/privacy |
 | Support link | ✅ https://modem.dev/contact |
 | Webhook events for plan changes | ⛔ **Not implemented** — required even for free listings, see blocker |
-| 2FA on the publishing account/org | ✅ Confirmed enabled on `modem-dev` (Talton, 2026-08-29). This is the GitHub org setting at [org security settings](https://github.com/organizations/modem-dev/settings/security), unrelated to Modem's own magic-link login |
+| 2FA on the publishing account/org | ✅ Confirmed enabled on `modem-dev` (Talton, 2026-08-29). Note: per the live docs this is only *required* for publisher verification (paid plans / verified badge), not for a plain free listing — so we're covered either way. Unrelated to Modem's own magic-link login |
+| Setup URL on the GitHub App | ⚠️ Required for Marketplace even though App settings call it optional — *"you will not be able to handle purchases"* without it. Confirm it's set |
+| App identifies users via OAuth flow | ⚠️ Verify the app implements the OAuth authorization flow and provisions accounts via `GET /user/marketplace_purchases` |
+| App is public + org owner submits | ⚠️ Draft listings require a public app; only an **org owner** can submit (App-manager role is not enough). Accept the Marketplace Developer Agreement at submission |
 
 ## Listing form — filled
 
@@ -103,20 +117,38 @@ it is the single most reassuring thing on the listing.
 
 ## Assets
 
-Core product shots now exist — see the
-[shared Drive folder](https://drive.google.com/drive/folders/11j63eVbF1QA0p_Qt54n77vRkddsZSOJn)
-and the tracker in `08-asset-shot-list.md` (C1, C2, C4 + Stories captured 2026-08-17;
-capture and framing skills included in the folder).
+Image specs verified against the live docs source (2026-08-29): logo ≥200×200 (cropped
+square; transparent background and no text recommended), feature-card background image
+**exactly 965×482**, screenshots ≥1200px wide with one consistent aspect ratio, up to
+five, content-window only (no browser chrome required by GitHub).
 
-- [ ] Logo, square, ≥512×512 PNG (export from brand kit; SVGs in `profile/`)
-- [x] General product screenshots (topics, topic detail, people/companies — in Drive)
+Ready-made files in this repo:
+
+- [x] Logo — `assets/github/modem-logo-512.png` and `modem-logo-1024.png` (rasterized
+      from the brand icon SVG; teal mark, transparent margins)
+- [x] Feature card — `assets/github/feature-card-965x482.png` (brand gradient
+      cover-cropped to spec; pick a light text color for the app name in the portal)
+- [x] General product screenshots — `assets/product-shots/01`–`10` (framed 2304×1440
+      derivatives mirrored from the
+      [shared Drive folder](https://drive.google.com/drive/folders/11j63eVbF1QA0p_Qt54n77vRkddsZSOJn),
+      captured 2026-08-17 against the MerchantRail demo org; capture + framing skills
+      alongside)
 - [ ] **I-GITHUB shot**: GitHub issues as feedback + PRs as shipping context, side by
       side — blocked on seeding GitHub data into the MerchantRail demo org
-- [ ] Feature cards / listing images at GitHub's current dimensions (crop from raws
-      with the framing skill at upload time)
 
 ## Before submitting
 
 - [ ] **Implement the `marketplace_purchase` webhook handler** — [DEV-4050](https://linear.app/modem-dev/issue/DEV-4050)
-- [x] Confirm 2FA on the publishing org — confirmed enabled (Talton, 2026-08-29)
-- [ ] Re-verify requirements against GitHub's live developer docs
+- [x] Confirm 2FA on the publishing org — confirmed enabled (Talton, 2026-08-29);
+      per live docs only strictly required for publisher verification anyway
+- [x] Re-verify requirements against GitHub's live developer docs — done 2026-08-29
+      against the `github/docs` source repo (docs.github.com is egress-blocked from
+      the work env). Confirmed: webhook must be configured **and active** on the
+      listing before submitting; free-plan floor is handling `purchased` +
+      `cancelled` (implement all five anyway — deliveries are **not retried**);
+      publisher verification not needed for free. New items folded into the
+      requirements table above (Setup URL, OAuth identify flow, org-owner
+      submission, Developer Agreement, public app). One open flag: the
+      free-plan-with-external-paid-service restriction — see the warning at the top
+- [ ] Resolve the free-plan ⚠️ (free listing vs. paid service on modem.dev) before
+      submitting

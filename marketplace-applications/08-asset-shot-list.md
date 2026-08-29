@@ -14,12 +14,15 @@ slug — routes are `apps/dashboard/src/app/[orgSlug]/(dashboard)/…`, served a
 `https://app.modem.dev/{org}/…`.
 
 **Where captured files land (decided):** the shared Drive folder
-[Modem product shots](https://drive.google.com/drive/folders/11j63eVbF1QA0p_Qt54n77vRkddsZSOJn).
-It holds the 10 raw captures (`01`–`10`, 2048×1200 @2×), the standardized marketing
-background (`Background`), and the two capture/framing skills used to produce them
-(`capture-and-frame-modem-screenshots.md`, `frame-existing-screenshits.md`). Add new
-captures there with the same numbered naming, and keep raw masters separate from
-framed derivatives.
+[Modem product shots](https://drive.google.com/drive/folders/11j63eVbF1QA0p_Qt54n77vRkddsZSOJn),
+**mirrored in this repo at `marketplace-applications/assets/product-shots/`** so any
+session with a clone has them without Drive access. Both hold the 10 shots (`01`–`10`),
+the standardized marketing background, and the two capture/framing skills used to
+produce them. Note: the files in circulation are the *framed* 2304×1440 derivatives
+(product pixels at 1:1 on the brand background with browser chrome, per the framing
+recipe) — the 2048×1200 raw masters weren't uploaded; re-frame needs would go back to
+Chrissy or a re-capture. Add new captures with the same numbered naming, and keep raw
+masters separate from framed derivatives.
 
 ## Progress
 
@@ -115,9 +118,17 @@ specs at upload time.
 - Demo video **30–90s**, YouTube, closed captions, no ads
 - Source: the Dec 2025 Slack Marketplace Submission review
 
-### GitHub, Notion, Linear, Gong
+### GitHub Marketplace (verified against `github/docs` source, 2026-08-29)
+- Logo: **≥200×200**, cropped to a square — upload a square image, transparent
+  background recommended, avoid text in the logo. Ready: `assets/github/modem-logo-512.png`
+- Feature card background image: **exactly 965×482** (logo + app name render over it;
+  pick a text color in the portal). Ready: `assets/github/feature-card-965x482.png`
+- Screenshots: up to five, **≥1200px wide**, all the same aspect ratio,
+  display-window content only. The 2304×1440 framed set qualifies
+
+### Notion, Linear, Gong
 **Verify in portal.** No published fixed dimensions found. The core set at 2× covers
-all four; crop at upload. Linear and Gong are human-reviewed submissions and are the
+all three; crop at upload. Linear and Gong are human-reviewed submissions and are the
 most forgiving.
 
 ## Demo video
