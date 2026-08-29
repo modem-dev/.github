@@ -1,0 +1,78 @@
+---
+title: "How Modem automates product ticket creation from customer conversations"
+date: "2026-08-29T09:00:00-04:00"
+author: "Talton Figgins"
+headerImage: "/images/guides/guide-hero-conversation-tickets.png"
+headerImageAlt: "Pixel art of chat bubbles funneling into a glowing teal ticket"
+excerpt: "The path from 'a customer said something in Slack' to 'an engineer has a ticket with the quotes attached' has five steps. Here's what each one looks like when Modem runs it."
+---
+
+Most product tickets start life as a conversation: a customer types "export is broken for us" into a shared Slack channel, a support agent closes a Zendesk ticket about the same thing, someone mentions it on a sales call. Turning those into tracker issues is usually a human job, done inconsistently, weeks late, with the customer's actual words lost in the retelling.
+
+We build [Modem](https://modem.dev/), and automating exactly that path is the core of the product. This guide walks through how it works, step by step, including the parts that stay under your team's control.
+
+<PipelineFigure />
+
+<Caption>The pipeline end to end: scattered reports cluster into one ranked topic, and the topic becomes a ticket, or a task for a coding agent, with the context attached.</Caption>
+
+## The short version
+
+| Step | What happens | Who does it |
+| --- | --- | --- |
+| 1. Connect sources | Slack, Discord, support, email, calls plug in once | You, in Settings |
+| 2. Capture | Every conversation is read as it happens | Modem, passively |
+| 3. Cluster | Related reports merge into one topic per underlying issue | Modem, on ingestion |
+| 4. Rank | Topics ordered by how many customers hit them | Modem, continuously |
+| 5. File | A consolidated ticket lands in Linear, Jira, GitHub, or GitLab | Modem, when you want it |
+
+## Step 1: Connect the places customers already talk
+
+Modem reads the channels where feedback actually arrives: [Slack](https://modem.dev/integrations/slack) and [Discord](https://modem.dev/integrations/discord) channels you add it to, [Microsoft Teams](https://modem.dev/integrations/microsoft-teams), support tools like [Zendesk](https://modem.dev/integrations/zendesk), [Intercom](https://modem.dev/integrations/intercom), and [Jira Service Desk](https://modem.dev/integrations/jira-service-desk), [forwarded email](https://modem.dev/integrations/email), and [Gong call transcripts](https://modem.dev/integrations/gong). Connecting a source is a one-time setup in the app; the [integrations overview](https://modem.dev/docs/integrations/overview) covers the full list.
+
+There's no capture step after that. Nobody emoji-tags messages, forwards threads, or fills in a form. That matters because the feedback most worth acting on is precisely the feedback nobody had time to file.
+
+## Step 2: Conversations become structured signal
+
+As messages arrive, Modem separates product signal (bug reports, feature requests, confusion, churn warnings) from the surrounding noise, and resolves who said it. The same customer showing up in a Discord thread, a Zendesk ticket, and a sales call gets linked to one person and company record, so a report carries who it came from and which account it affects.
+
+## Step 3: Duplicates merge into topics
+
+This is the step that changes the shape of the ticket you eventually file. Five reports of one bug across three channels don't become five tickets: they cluster into one topic with all five quotes, the affected customers, and the history attached. Clustering happens on ingestion, not in a weekly grooming session, so there's no board to weed and no backlog of unsorted feedback waiting for a human. The [topics guide](https://modem.dev/docs/guides/topics) covers the mechanics.
+
+## Step 4: Topics rank by demand
+
+Topics are ordered by how many customers are behind them, so "what should we look at first" has a defensible answer before anyone opens a planning meeting. You can browse the ranked list in the app, or ask the [agent](https://modem.dev/docs/features/agent) directly, in Slack or the dashboard: "what are customers saying about exports?" gets an answer grounded in the graph, not a search over raw messages.
+
+## Step 5: A topic becomes a ticket, with the context attached
+
+When a topic is worth acting on, Modem files a consolidated issue in [Linear](https://modem.dev/integrations/linear), [Jira](https://modem.dev/integrations/jira), [GitHub](https://modem.dev/integrations/github), or [GitLab](https://modem.dev/integrations/gitlab). The ticket carries the summary, the original customer quotes, and links back to the source conversations, so the engineer picking it up isn't working from a paraphrase.
+
+How automatic this step is stays your call. You can ask the agent to file from a conversation ("create a Linear issue for this"), file from the topic itself, or set up [event automations](https://modem.dev/docs/features/automations) that trigger the agent when product or GitHub events fire. Teams that want a human approving every ticket keep that gate; teams that trust the pipeline let it run.
+
+Tickets aren't the only output: the same topic can go [straight to a coding agent](https://modem.dev/guides/best-tools-route-feedback-to-coding-agents) like Claude Code, Cursor, or Devin as a task brief, and any MCP-capable agent can query the graph through the [Modem MCP server](https://modem.dev/docs/api/modem-mcp-server).
+
+## After the ticket ships
+
+The pipeline doesn't stop at filing. When a PR merges in a connected repo, Modem matches it back to the topic and suggests exactly who to follow up with, so the people who reported the problem hear that it's fixed. That's the [close-the-loop](https://modem.dev/close-the-loop) half of the product, covered in more depth in our [loop-closing tools guide](https://modem.dev/guides/best-tools-for-closing-the-customer-feedback-loop).
+
+## Where this fits, and where it doesn't
+
+Modem fits teams whose feedback arrives scattered across conversations and whose bottleneck is getting it into engineering's queue with context intact. It doesn't replace your tracker (tickets land in the tracker you already run), it doesn't give customers a public roadmap to vote on (pair it with a board if you want one), and if your intake is already clean and single-channel, your tracker's native AI may be a smaller lift; our [triage tools comparison](https://modem.dev/guides/best-ai-triage-tools-for-engineering-teams) covers those options honestly.
+
+## FAQ
+
+### Does Modem create tickets without approval?
+
+Only if you set it up that way. The default motion is that a person asks the agent to file, from Slack, the dashboard, or a topic. Event automations can remove the human step for workflows where you want that, and leave it in everywhere else.
+
+### Which issue trackers does it support?
+
+Linear and Jira with two-way sync (the agent can search, create, update, and comment), plus GitHub and GitLab issues. See [integrations](https://modem.dev/integrations) for the full list.
+
+### How is this different from a Zapier-style "new message, new ticket" automation?
+
+Forwarding rules copy messages one-to-one, so ten reports of one bug become ten tickets and the deduplication becomes your tracker's problem. Modem clusters first and files once, which is the difference between automating the copying and automating the triage.
+
+### Can my coding agents use this directly?
+
+Yes. The [Modem MCP server](https://modem.dev/docs/api/modem-mcp-server) exposes the agent over MCP with OAuth (`claude mcp add --transport http modem https://mcp.modem.dev/mcp` in Claude Code), and the [`@modem-dev/cli`](https://www.npmjs.com/package/@modem-dev/cli) covers scripted access. An agent picking up a ticket can pull the customer context behind it instead of working from the ticket text alone.

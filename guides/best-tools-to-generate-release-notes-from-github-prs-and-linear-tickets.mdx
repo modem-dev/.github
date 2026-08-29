@@ -1,0 +1,79 @@
+---
+title: "The 6 best tools to generate release notes from GitHub PRs and Linear tickets in 2026"
+date: "2026-08-29T10:00:00-04:00"
+author: "Talton Figgins"
+headerImage: "/images/guides/guide-hero-release-notes.png"
+headerImageAlt: "Pixel art of merged pull request icons stacking into a glowing scroll"
+excerpt: "The work is already written down in merged PRs and closed tickets. Six tools that turn that record into customer-facing release notes, compared on drafting, and on who actually receives them."
+---
+
+Release notes are the most automatable document in software: everything they describe already exists as a merged PR title, a closed Linear ticket, a commit message. And yet they ship late or not at all, because turning the internal record into something a customer should read is nobody's favorite Friday task.
+
+Two separate jobs hide in this search: *drafting* the notes from GitHub and Linear activity, and *delivering* them to customers. The tools below split on which job they do. One of them is Modem, which we build; judge our entry with that in mind.
+
+<LoopFigure />
+
+<Caption>Release notes are step three of closing the loop: the work shipped, and the people waiting on it get told. Generating the text is the easy half; knowing who was waiting is the hard half.</Caption>
+
+## The short version
+
+| Tool | Drafts from | Audience targeting | Delivery | Best for |
+| --- | --- | --- | --- | --- |
+| Modem | Merged PRs + the feedback graph behind them | The customers who asked for each change | Agent-drafted notes, digests, replies in-channel | Notes that reach the people waiting |
+| Released | Jira boards and dev activity, AI-drafted | Public changelog readers | Changelog page, in-app | Jira-native teams |
+| LaunchNotes | Manual + imported dev activity | Subscribers per project/category | Announcement pages, email | Product comms at process-heavy orgs |
+| Beamer | Manual drafting | Segmented app users | In-app widget, email | In-app announcement visibility |
+| GitHub auto-generated notes | Merged PR titles and labels | Repo watchers | GitHub Releases page | Developer-facing repos, free |
+| DIY (Actions + an LLM) | Anything you script | Anyone you script | Anywhere you script | Teams with exact requirements |
+
+## 1. Modem
+
+[Modem](https://modem.dev/) starts from the connection the other tools don't have: it already links shipped work to the customer conversations that asked for it. Feedback from [Slack](https://modem.dev/integrations/slack), [Discord](https://modem.dev/integrations/discord), [support](https://modem.dev/integrations/zendesk), and [email](https://modem.dev/integrations/email) clusters into topics; when a PR merges in a [connected repo](https://modem.dev/integrations/github) or a [Linear ticket](https://modem.dev/integrations/linear) completes, the work is matched back to the topic and the people behind it.
+
+So the [agent](https://modem.dev/docs/features/agent) doesn't just draft release notes from the merge record: it drafts them knowing who cared, tailored notes, personalized digests, or replies posted into the conversations where the requests originally landed. That's release notes as [loop-closing](https://modem.dev/close-the-loop) rather than broadcasting: the eight customers who asked for the export fix hear that it shipped, in their channel, in terms of what they asked for.
+
+**Where it fits:** teams that want shipped-work communication driven by who was waiting. **Where it doesn't:** if you need a public changelog page as the artifact, pair it with one of the page-first tools below.
+
+## 2. Released
+
+[Released](https://www.released.so/) is the Jira-native answer: it watches your boards and development activity and uses AI to draft release notes from tickets, organized into a changelog you can publish as a page or in-app. If writing the notes is the bottleneck and the source of truth is Jira, it's the most direct fit on this list.
+
+Its center of gravity is the Atlassian ecosystem, so teams on Linear and GitHub should verify current coverage of their stack before committing.
+
+**Where it fits:** Jira shops that want AI-drafted notes from the tickets they already write.
+
+## 3. LaunchNotes
+
+[LaunchNotes](https://www.launchnotes.com/), built by ex-Atlassian folks, is a product-communication platform: announcement pages, categorized updates, and subscriber notifications, so customers and internal teams can follow the streams they care about. It's aimed at orgs where release communication is a process with stakeholders, not just a page.
+
+Drafting still leans on a human editor shaping what the dev-activity record means; the platform's strength is the publishing and subscription machinery around it.
+
+**Where it fits:** process-heavy product orgs communicating changes to segmented audiences.
+
+## 4. Beamer
+
+[Beamer](https://www.getbeamer.com/) puts the notes where users already are: an in-app widget plus email, with segmentation so an announcement reaches the users it's relevant to. Pricing is MAU-based, starting around $49/month, with segmentation and reactions on higher tiers.
+
+It's a delivery tool: the drafting from PRs and tickets is yours, and its capture of whether anyone cared runs through reactions and feedback on the announcement itself.
+
+**Where it fits:** products where in-app visibility of "what's new" moves adoption.
+
+## 5. GitHub's auto-generated release notes
+
+[GitHub generates release notes natively](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes): one click (or API call) on a release compiles merged PR titles since the last tag, grouped by label, with first-time-contributor callouts, configurable through a `release.yml`. Free, zero setup, and it's the right default for developer-facing repositories where the audience reads GitHub.
+
+It's a compilation of PR titles, not customer-facing prose, and it knows nothing about Linear or about which customers were waiting.
+
+**Where it fits:** open source and API/SDK products whose users live on the Releases page.
+
+## 6. DIY: Actions plus an LLM
+
+The build-it option: a GitHub Action that collects merged PRs and closed Linear tickets since the last release, hands them to an LLM with your voice guidelines, and opens the draft as a PR to your changelog. Teams like [Ascend have written up the pattern](https://www.ascend.io/blog/how-we-built-an-ai-powered-release-notes-pipeline), and it's a weekend of work that fits your exact format.
+
+Like all internal tooling, it's free until it breaks the week the person who built it is on vacation, and delivery to customers is still a separate problem.
+
+**Where it fits:** teams with strong opinions about format and someone happy to own a pipeline.
+
+## How to choose
+
+Decide which half you're missing. If it's *drafting*, GitHub's native generation (developer audiences), Released (Jira), or a DIY pipeline covers it. If it's *delivery*, Beamer and LaunchNotes are publishing machinery. If it's *both, and specifically reaching the customers who asked*, that's the version [Modem](https://modem.dev/close-the-loop) automates: the merge event triggers it, the feedback graph supplies the audience, and the agent drafts the message in terms of the original request. The test: pick a feature you shipped last month and ask each tool who should be told. Only one kind of tool can answer with names. Our [loop-closing guide](https://modem.dev/guides/best-tools-for-closing-the-customer-feedback-loop) covers that broader workflow.
