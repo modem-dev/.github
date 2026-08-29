@@ -16,13 +16,36 @@ All sized to Linear's published requirements.
 
 Showcase images are the framed marketing artwork (2304×1440 masters, browser chrome on the brand halftone background) downscaled to Linear's 1600×1000 spec — designed treatments, not bare screenshots, per Linear's guidance. Masters live in the [product shots Drive folder](https://drive.google.com/drive/folders/11j63eVbF1QA0p_Qt54n77vRkddsZSOJn). Icons are extracted from the brand wordmark glyph (`profile/logo-*.svg`); the monochrome icon is a white square with the glyph knocked out to transparency.
 
-## Draft listing copy
+## Form answers (crib sheet)
 
-> **Modem** turns customer conversations into a living map of what users need. It ingests threads from Slack, Zendesk, and your other support and community channels, clusters them into topics tied to the people and companies behind them, and keeps everything current as new messages arrive.
+The form is the "Fill out this form" link in the [Submit your integration](https://linear.app/docs/integration-directory#submit-your-integration) section. Linear's asset template: [Figma community file](https://www.figma.com/community/file/1111754695287344546/linear-integrations-template).
+
+| Field | Answer |
+|---|---|
+| Integration name | Modem |
+| One-liner | Turn customer conversations into Linear issues, automatically |
+| Company | Modem (formal company) |
+| Website | https://modem.dev |
+| Docs | https://modem.dev/docs |
+| Integrations page | https://modem.dev/integrations |
+| App / install | https://app.modem.dev — connect Linear via OAuth from Settings → Integrations (workspace admin) |
+| Contact | talton@modem.dev |
+| Categories | Customer support · Product management · AI |
+| Assets | This directory, or the [Drive folder](https://drive.google.com/drive/folders/11j63eVbF1QA0p_Qt54n77vRkddsZSOJn) |
+
+### Listing copy draft
+
+> Modem is an AI PM that listens where work happens — Slack, Discord, Zendesk, email, and call transcripts — and clusters raw conversations into product-level topics tied to the people and companies behind them.
 >
-> With the Linear integration, topics link directly to Linear issues: create or link issues from a topic, see linked work alongside the customer evidence, and close the loop with customers when issues ship.
+> **File issues with evidence.** When a topic calls for product work, Modem creates a Linear issue carrying the customer's actual words — quotes, user story, and links back to every source conversation.
+>
+> **No duplicate filings.** Incoming feedback matches to existing Linear issues, so the same bug never gets filed three times.
+>
+> **Stay in sync.** Status, priority, assignee, and comments update between Linear and Modem — and from Slack. When linked work ships, close the loop with the customers who asked.
+>
+> **Setup.** Sign in at app.modem.dev, open Settings → Integrations → Linear, and authorize with OAuth as a workspace admin. Choose which teams Modem can file into.
 
-Adjust against the sample page in Linear's submission form for style and length.
+Check paths for privacy policy / terms URLs before submitting (modem.dev/privacy, modem.dev/terms or equivalent) — marketplace reviews usually ask for both.
 
 ## Remaining steps
 
