@@ -59,6 +59,47 @@ and Unwrap on top).
    `SlackSignalFigure`, `LoopFigure`) — all already imported in
    `app/guides/[slug]/page.tsx`, so no code changes are required.
 
+## Cannibalization guardrails (required at port time)
+
+One page per intent. The alternatives guides now own the plural roundup intent
+("[X] alternatives"), so the `/X-alternative` landers must stop targeting it —
+their current `<title>` tags ("X alternative for engineering teams | Modem")
+collide head-on. Retitle them in `components/competitor/competitor-data.ts`
+to the comparison intent they already carry everywhere else (llms.txt labels
+them "Modem vs X"; every guide links them with "Modem vs X" anchors):
+
+| Lander | Current title | Retitle to |
+| --- | --- | --- |
+| `canny-alternative` | Canny alternative for engineering teams \| Modem | Modem vs Canny for engineering teams \| Modem |
+| `productboard-alternative` | Productboard alternative for engineering teams \| Modem | Modem vs Productboard for engineering teams \| Modem |
+| `pendo-alternative` | Pendo alternative for engineering teams \| Modem | Modem vs Pendo for engineering teams \| Modem |
+| `enterpret-alternative` | Enterpret alternative for engineering teams \| Modem | Modem vs Enterpret for engineering teams \| Modem |
+| `buildbetter-alternative` | BuildBetter alternative for engineering teams \| Modem | Modem vs BuildBetter for engineering teams \| Modem |
+| `unwrap-alternative` | Unwrap alternative for engineering teams \| Modem | Modem vs Unwrap for engineering teams \| Modem |
+| `pylon-alternative` | Pylon alternative for feedback triage \| Modem | Modem vs Pylon for feedback triage \| Modem |
+
+Also update each lander's meta `description` to comparison phrasing ("How
+Modem compares to X for..."), keeping "alternative" out of the title. URLs
+stay as-is (slugs are fine; intent lives in title/H1/content). Re-request
+indexing for the seven landers after retitling so the old titles drop.
+
+Intent map after the change — each query family has exactly one owner:
+
+- "modem vs [X]" / "[X] vs modem" → `/X-alternative` lander
+- "[X] alternatives" / "best [X] alternative" → `/guides/best-X-alternatives`
+- "[X] vs [Y] vs [Z]" (no Modem) → the vs-matchup guides
+- "best tools to [job]" → the job listicle guides
+- "how does Modem [job]" → the explainer guide
+
+Two adjacent de-conflicts already applied in this repo's files: the batch-1
+triage guide is titled "...for product teams..." so it can't collide with the
+published "best AI triage tools for engineering teams" guide; anchor text
+throughout links landers only as "Modem vs X" and guides only by topic.
+
+Bonus catch while auditing titles: `claude-tag` lander's title is "Modem vs
+Claude Tag | The AI teammate built for engineers" — "AI teammate" is the
+retired positioning PR #289 removed elsewhere. Retitle while in the file.
+
 ## Sourcing notes
 
 - Competitor facts (pricing, source lists, feature claims) reuse wording already
