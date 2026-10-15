@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://modem.dev?utm_source=github&utm_medium=org_readme&utm_campaign=banner">
+  <a href="https://modem.ai?utm_source=github&utm_medium=org_readme&utm_campaign=banner">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./logo-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="./logo-light.svg">
@@ -8,10 +8,10 @@
   </a>
 </p>
 
-<h3 align="center">Your dev team's auto-triage Product Manager.</h3>
+<h3 align="center">Find, fix, and follow up on every customer concern.</h3>
 
 <p align="center">
-  Modem captures every piece of customer feedback your team gets — from group chat, support tickets, GitHub issues, and more — and triages it automatically so agents and engineers can execute instead of waiting on traditional PMs.
+  Modem reads the places your customers talk, from Slack and Discord to support tickets, calls, and GitHub issues, and groups every report into topics with the people and companies behind them. Each topic links to the Linear issue or pull request that resolves it. Use the Modem agent in Slack, or connect Claude Code, Cursor, or ChatGPT to our MCP server.
 </p>
 
 <p align="center">
@@ -20,9 +20,9 @@
 </p>
 
 <p align="center">
-  <a href="https://modem.dev?utm_source=github&utm_medium=org_readme&utm_campaign=cta_try"><strong>Try Modem free</strong></a> ·
-  <a href="https://modem.dev/docs?utm_source=github&utm_medium=org_readme&utm_campaign=cta_docs">Read the docs</a> ·
-  <a href="https://modem.dev/blog?utm_source=github&utm_medium=org_readme&utm_campaign=cta_blog">Blog</a>
+  <a href="https://modem.ai?utm_source=github&utm_medium=org_readme&utm_campaign=cta_try"><strong>Try Modem free</strong></a> ·
+  <a href="https://modem.ai/docs?utm_source=github&utm_medium=org_readme&utm_campaign=cta_docs">Read the docs</a> ·
+  <a href="https://modem.ai/blog?utm_source=github&utm_medium=org_readme&utm_campaign=cta_blog">Blog</a>
 </p>
 
 ---
@@ -41,8 +41,8 @@ We build a lot in the open. A few highlights:
 
 ## Resources
 
-- [Documentation](https://modem.dev/docs?utm_source=github&utm_medium=org_readme)
-- [Blog](https://modem.dev/blog?utm_source=github&utm_medium=org_readme)
+- [Documentation](https://modem.ai/docs?utm_source=github&utm_medium=org_readme)
+- [Blog](https://modem.ai/blog?utm_source=github&utm_medium=org_readme)
 - [State of Agentic Coding podcast](https://www.youtube.com/@arminronacher) — Ben + Armin Ronacher
 
 ## Backed by
